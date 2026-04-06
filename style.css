@@ -18,10 +18,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -32,17 +28,34 @@ body {
     #04030c 100%
   );
   color: #fff;
-  overflow-x: hidden;
+  padding-top: 86px;
 }
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+#services,
+#our-projects,
+#our-clients,
+#join-us {
+  scroll-margin-top: 110px;
+}
+
 
 /* Navbar Bootstrap (sesuai struktur index.html) */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   min-height: 86px;
-  background: var(--nav-bg) !important;
+  background: rgba(5, 2, 41, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 0;
+  width: 100%;
 }
 
 .navbar .container-fluid {
@@ -52,6 +65,12 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .navbar-collapse {
@@ -66,6 +85,18 @@ body {
   font-size: 44px;
   letter-spacing: 0.4px;
   margin-right: 0;
+}
+
+.navbar-logo {
+  height: 44px;
+  width: auto;
+  display: inline-block;
+}
+
+.footer-logo-img {
+  height: clamp(36px, 3vw, 54px);
+  width: auto;
+  display: inline-block;
 }
 
 .navbar-nav {
@@ -147,6 +178,85 @@ body {
 
 .navbar-nav .nav-link.disabled {
   opacity: 0.45;
+}
+
+/* Custom dropdown styling untuk menu SERVICES */
+.dropdown-menu {
+  background: rgba(9, 10, 26, 0.94);
+  border: 1px solid rgba(111, 92, 255, 0.25);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+  padding: 12px 0;
+  min-width: 240px;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 14px;
+  height: 14px;
+  background: rgba(9, 10, 26, 0.94);
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(111, 92, 255, 0.25);
+  border-top: 1px solid rgba(111, 92, 255, 0.25);
+  z-index: 0;
+}
+
+.dropdown-item {
+  font-family: var(--font-navbar);
+  color: #f3f7ff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 20px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: linear-gradient(90deg, rgba(111, 92, 255, 0.24), rgba(52, 153, 255, 0.18));
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.navbar-nav .dropdown-toggle::after {
+  transition: transform 0.2s ease;
+}
+
+.navbar-nav .dropdown.show .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.navbar-nav .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-nav .dropdown-item:hover::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #6f5cff, #2fa8ff);
+}
+
+.navbar-nav .dropdown-menu a {
+  position: relative;
+}
+
+.navbar-nav .dropdown-toggle,
+.navbar-nav .nav-link {
+  font-family: var(--font-navbar);
 }
 
 .navbar-toggler {

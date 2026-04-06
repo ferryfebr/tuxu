@@ -27,11 +27,13 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body id="top">
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Nebula X</a>
+        <a class="navbar-brand" href="#top">
+          <img src="image/logoNebulax.png" alt="Nebula X" class="navbar-logo" />
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,22 +48,39 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">HOME</a>
+              <a class="nav-link active" aria-current="page" href="#top">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ABOUT</a>
+              <a class="nav-link" href="#services" data-service-tab="BRANDING & IDENTITY">ABOUT</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#services"
+                id="servicesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                SERVICES
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <li>
+                  <a class="dropdown-item" href="#services" data-service-tab="MOTION & FILMMAKING">MOTION & FILMMAKING</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#services" data-service-tab="DIGITAL CONTENT HUB">DIGITAL CONTENT HUB</a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SERVICES</a>
+              <a class="nav-link" href="#our-projects">PROJECTS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">PROJECTS</a>
+              <a class="nav-link" href="#our-clients">CLIENTS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">CLIENTS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CONTACTS</a>
+              <a class="nav-link" href="#join-us">CONTACTS</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -72,7 +91,7 @@
     </nav>
 
     <!-- service tabs -->
-    <section class="service-tabs" aria-label="Kategori layanan">
+    <section id="services" class="service-tabs" aria-label="Kategori layanan">
       <div
         class="service-tabs-wrap"
         role="tablist"
@@ -159,7 +178,7 @@
     </main>
 
     <!-- our projects -->
-    <section class="projects-showcase" aria-label="Our projects">
+    <section id="our-projects" class="projects-showcase" aria-label="Our projects">
       <h2 class="projects-title">OUR PROJECTS</h2>
 
       <div class="projects-frame">
@@ -262,7 +281,7 @@
     </section>
 
     <!-- our clients -->
-    <section class="clients-showcase" aria-label="Our clients">
+    <section id="our-clients" class="clients-showcase" aria-label="Our clients">
       <h2 class="clients-title">OUR CLIENTS</h2>
 
       <div class="clients-row clients-row-top">
@@ -304,7 +323,7 @@
 
     <!-- cta + footer -->
     <footer class="site-footer" aria-label="Footer utama">
-      <div class="footer-cta-wrap">
+      <div id="join-us" class="footer-cta-wrap">
         <div class="footer-cta">
           <h2>Join us to create, sell and Collect NFT Digital Art</h2>
           <a href="#" class="footer-cta-btn">Join Community</a>
@@ -314,7 +333,9 @@
       <div class="footer-main-wrap">
         <div class="footer-main">
           <div class="footer-brand-col">
-            <a href="#" class="footer-logo">PLAY <span>NFT</span></a>
+            <a href="#" class="footer-logo">
+              <img src="image/logoNebulax.png" alt="Nebula X" class="footer-logo-img" />
+            </a>
             <p>
               The World's Largest Digital Marketplace for crypto collections and
               non fungible tokens (NFTs). Buy, sell and discover exclusive
@@ -380,6 +401,28 @@
 
     <script>
       const serviceTabs = document.querySelectorAll(".service-tab");
+
+      // Fungsi untuk memilih tab layanan berdasarkan nama dan menjalankan klik animasinya
+      const activateServiceTab = (tabName) => {
+        const matchingTab = Array.from(serviceTabs).find(
+          (tab) => tab.textContent.trim() === tabName,
+        );
+        if (!matchingTab) return;
+        matchingTab.click();
+      };
+
+      // Tautan menu yang mengarahkan ke tab layanan tertentu
+      document.querySelectorAll("[data-service-tab]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const tabName = event.currentTarget.dataset.serviceTab;
+          activateServiceTab(tabName);
+          const targetSection = document.querySelector("#services");
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
 
       // Konten untuk setiap tab
       const heroContents = {
@@ -771,6 +814,16 @@
 
       // === ANIMASI HERO DAN MARKER ===
       // Script ini menangani perpindahan konten hero dengan efek 3D parallax saat klik tab
+
+      // Navbar background on scroll
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
