@@ -71,54 +71,6 @@
       </div>
     </nav>
 
-    <!-- content -->
-    <main class="hero-section">
-      <div class="hero-container">
-        <div class="hero-left">
-          <h1>
-            WE'RE NEBULA X,<br />
-            A CREATIVE AGENCY<br />
-            SOLUTIONS FOR EVENTS<br />
-            &amp; EXHIBITIONS
-          </h1>
-          <p>
-            As a company specializing in events &amp; marketing, we have shaped
-            our business on these values, determination, power, strength &amp;
-            honor dignity. We readily apply what we stand for in every area of
-            our business services to our clients.
-          </p>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-image-wrap">
-            <img
-              src="image/cyb.jpg"
-              alt="Nebula X event visual"
-              class="hero-image"
-            />
-            <span class="hero-image-badge">JOHOR SMART CITY FORUM 2025</span>
-          </div>
-
-          <div class="hero-about">
-            <h2>WHO ARE WE?</h2>
-            <p>
-              We are a creative agency specialising in event management, media
-              strategies, video production and advertising.<br />
-              We are currently based in Kuala Lumpur, Johor Bahru and
-              Kuching.<br />
-              We create memorable events, comprehensive media strategies,
-              meaningful videos that empower and help our clients achieve their
-              desired needs. What makes us distinctively different from other
-              agencies is our unique management ‘team’. It comprises of
-              specialists in their own fields. To us, ‘age is just a number’.<br />
-              We move as one with the ultimate goal of giving our clients the
-              best regardless of project size and scope.
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
-
     <!-- service tabs -->
     <section class="service-tabs" aria-label="Kategori layanan">
       <div
@@ -152,6 +104,59 @@
         </button>
       </div>
     </section>
+
+    <!-- content -->
+    <main class="hero-section">
+      <div class="hero-container">
+        <div class="hero-left">
+          <h1>
+            WE'RE NEBULA X,<br />
+            A CREATIVE AGENCY<br />
+            SOLUTIONS FOR EVENTS<br />
+            &amp; EXHIBITIONS
+          </h1>
+          <p>
+            As a company specializing in events &amp; marketing, we have shaped
+            our business on these values, determination, power, strength &amp;
+            honor dignity. We readily apply what we stand for in every area of
+            our business services to our clients.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-image-wrap">
+            <!-- Gambar peta dunia malam hari dengan penanda lokasi -->
+            <img
+              src="image/slice.jpg"
+              alt="Nebula X event visual"
+              class="hero-image"
+            />
+            <span class="hero-image-badge">OUR COMPANY</span>
+            <!-- Penanda lokasi interaktif pada peta -->
+            <div class="location-marker japan" title="Japan"></div>
+            <div class="location-marker yogyakarta" title="Yogyakarta, Indonesia"></div>
+            <div class="location-marker johor" title="Johor, Malaysia"></div>
+          </div>
+
+          <div class="hero-about">
+            <h2>WHO ARE WE?</h2>
+            <p>
+              We are a creative agency specialising in event management, media
+              strategies, video production and advertising.<br />
+              We are currently based in Kuala Lumpur, Johor Bahru and
+              Kuching.<br />
+              We create memorable events, comprehensive media strategies,
+              meaningful videos that empower and help our clients achieve their
+              desired needs. What makes us distinctively different from other
+              agencies is our unique management ‘team’. It comprises of
+              specialists in their own fields. To us, ‘age is just a number’.<br />
+              We move as one with the ultimate goal of giving our clients the
+              best regardless of project size and scope.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <!-- our projects -->
     <section class="projects-showcase" aria-label="Our projects">
@@ -285,8 +290,39 @@
     <script>
       const serviceTabs = document.querySelectorAll(".service-tab");
 
+      // Konten untuk setiap tab
+      const heroContents = {
+        "BRANDING & IDENTITY": {
+          title: "WE'RE NEBULA X,<br />A CREATIVE AGENCY<br />SOLUTIONS FOR EVENTS<br />& EXHIBITIONS",
+          desc: "As a company specializing in events & marketing, we have shaped our business on these values, determination, power, strength & honor dignity. We readily apply what we stand for in every area of our business services to our clients.",
+          image: "image/slice.jpg",
+          badge: "OUR COMPANY",
+          aboutTitle: "WHO ARE WE?",
+          aboutText: "We are a creative agency specialising in event management, media strategies, video production and advertising. We are currently based in Kuala Lumpur, Johor Bahru and Kuching. We create memorable events, comprehensive media strategies, meaningful videos that empower and help our clients achieve their desired needs. What makes us distinctively different from other agencies is our unique management ‘team’. It comprises of specialists in their own fields. To us, ‘age is just a number’. We move as one with the ultimate goal of giving our clients the best regardless of project size and scope."
+        },
+        "MOTION & FILMMAKING": {
+          title: "MOTION & FILMMAKING<br />SERVICES",
+          desc: "We specialize in creating high-quality motion graphics, filmmaking, and video production to bring your stories to life. From concept to screen, we deliver captivating visuals that engage audiences.",
+          image: "image/slice.jpg",
+          badge: "MOTION & FILMMAKING",
+          aboutTitle: "OUR MOTION STUDIO",
+          aboutText: "Our motion and filmmaking team turns brand ideas into cinematic stories. We craft dynamic video concepts, animation, and live action content for events, campaigns, and digital experiences. This is your brand in motion, ready to impress and move audiences across every screen."
+        },
+        "DIGITAL CONTENT HUB": {
+          title: "DIGITAL CONTENT HUB<br />MANAGEMENT",
+          desc: "Our digital content hub provides comprehensive solutions for content creation, management, and distribution across all digital platforms. Elevate your online presence with our expert strategies.",
+          image: "image/slice.jpg",
+          badge: "DIGITAL CONTENT HUB",
+          aboutTitle: "DIGITAL CONTENT HUB",
+          aboutText: "This page is your temporary digital content workspace. We support content planning, publishing, analytics, and community engagement. Get ready for a future-ready hub that helps brands stay visible, connected, and impactful across every channel."
+        }
+      };
+
       serviceTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
+          // Jika tab sudah aktif, jangan lakukan apa-apa
+          if (tab.classList.contains("is-active")) return;
+
           serviceTabs.forEach((item) => {
             item.classList.remove("is-active");
             item.setAttribute("aria-selected", "false");
@@ -294,6 +330,66 @@
 
           tab.classList.add("is-active");
           tab.setAttribute("aria-selected", "true");
+
+          // Animasi slicing ke kiri dengan efek parallax
+          const heroH1 = document.querySelector(".hero-left h1");
+          const heroP = document.querySelector(".hero-left p");
+          const heroImg = document.querySelector(".hero-image");
+          const heroBadge = document.querySelector(".hero-image-badge");
+          const heroAboutTitle = document.querySelector(".hero-about h2");
+          const heroAboutText = document.querySelector(".hero-about p");
+          const locationMarkers = document.querySelectorAll(".location-marker");
+
+          // Fade out dengan slicing ke kiri dan rotasi 3D
+          heroH1.style.transform = 'translateX(-140px) rotateY(18deg)';
+          heroH1.style.opacity = '0';
+          heroP.style.transform = 'translateX(-100px) rotateY(12deg)';
+          heroP.style.opacity = '0';
+          heroImg.style.transform = 'translateX(-80px) translateZ(-30px) rotateY(10deg)';
+          heroImg.style.opacity = '0';
+          heroBadge.style.transform = 'translateX(-60px) rotateY(8deg)';
+          heroBadge.style.opacity = '0';
+          heroAboutTitle.style.transform = 'translateX(-120px) rotateY(14deg)';
+          heroAboutTitle.style.opacity = '0';
+          heroAboutText.style.transform = 'translateX(-90px) rotateY(10deg)';
+          heroAboutText.style.opacity = '0';
+          locationMarkers.forEach((marker, index) => {
+            const offset = -40 - index * 8;
+            marker.style.transform = `translateX(${offset}px) translateZ(-${8 + index * 4}px)`;
+            marker.style.opacity = '0';
+          });
+
+          setTimeout(() => {
+            // Ubah konten hero
+            const tabText = tab.textContent.trim();
+            const content = heroContents[tabText];
+            if (content) {
+              heroH1.innerHTML = content.title;
+              heroP.textContent = content.desc;
+              heroImg.src = content.image;
+              heroBadge.textContent = content.badge;
+              heroAboutTitle.textContent = content.aboutTitle;
+              heroAboutText.textContent = content.aboutText;
+            }
+
+            // Animasi fade in dengan efek 3D kembali
+            heroH1.style.transform = 'translateX(0) rotateY(0deg)';
+            heroH1.style.opacity = '1';
+            heroP.style.transform = 'translateX(0) rotateY(0deg)';
+            heroP.style.opacity = '1';
+            heroImg.style.transform = 'translateX(0) translateZ(0) rotateY(0deg)';
+            heroImg.style.opacity = '1';
+            heroBadge.style.transform = 'translateX(0) rotateY(0deg)';
+            heroBadge.style.opacity = '1';
+            heroAboutTitle.style.transform = 'translateX(0) rotateY(0deg)';
+            heroAboutTitle.style.opacity = '1';
+            heroAboutText.style.transform = 'translateX(0) rotateY(0deg)';
+            heroAboutText.style.opacity = '1';
+            locationMarkers.forEach((marker) => {
+              marker.style.transform = 'translateX(0) translateZ(0)';
+              marker.style.opacity = '1';
+            });
+          }, 400);
         });
       });
 
@@ -367,6 +463,9 @@
           centerCard(2, "auto");
         });
       }
+
+      // === ANIMASI HERO DAN MARKER ===
+      // Script ini menangani perpindahan konten hero dengan efek 3D parallax saat klik tab
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->

@@ -32,6 +32,9 @@ body {
 
 /* Navbar Bootstrap (sesuai struktur index.html) */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   min-height: 86px;
   background: var(--nav-bg) !important;
   padding: 0;
@@ -159,6 +162,8 @@ body {
   padding: 34px 0 56px;
   position: relative;
   overflow: hidden;
+  perspective: 1400px;
+  perspective-origin: left center;
 }
 
 .hero-section::before {
@@ -195,8 +200,10 @@ body {
   gap: 36px;
   position: relative;
   z-index: 1;
+  transform-style: preserve-3d;
 }
 
+/* Elemen hero dengan transisi smooth untuk animasi 3D */
 .hero-left h1 {
   margin: 0 0 18px;
   font-family: var(--font-navbar);
@@ -204,6 +211,7 @@ body {
   line-height: 1.08;
   font-weight: 400;
   letter-spacing: 0.02em;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .hero-left p {
@@ -212,6 +220,7 @@ body {
   color: rgba(234, 241, 255, 0.94);
   font-size: clamp(16px, 1.08vw, 28px);
   line-height: 1.55;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .hero-right {
@@ -230,8 +239,10 @@ body {
 .hero-image {
   width: 100%;
   height: clamp(230px, 33vw, 460px);
-  object-fit: cover;
+  object-fit: fill;
   display: block;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform-style: preserve-3d;
 }
 
 .hero-image-badge {
@@ -246,14 +257,67 @@ body {
   font-size: clamp(10px, 0.7vw, 14px);
   letter-spacing: 0.04em;
   color: #ecf3ff;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* Penanda lokasi interaktif pada peta dengan tooltip hover */
+.location-marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #ff0000;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.location-marker::after {
+  content: attr(title);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.location-marker:hover::after {
+  opacity: 1;
+}
+
+.location-marker.japan {
+  top: 28%;
+  left: 87%;
+}
+
+.location-marker.yogyakarta {
+  top: 53%;
+  left: 80%;
+}
+
+.location-marker.johor {
+  top: 46%;
+  left: 77%;
+}
+
+/* Bagian about dengan transisi untuk konten dinamis */
 .hero-about h2 {
   margin: 0 0 10px;
   font-family: var(--font-navbar);
   font-weight: 400;
   letter-spacing: 0.03em;
   font-size: clamp(28px, 2.2vw, 44px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .hero-about p {
@@ -261,6 +325,7 @@ body {
   color: rgba(238, 245, 255, 0.92);
   line-height: 1.55;
   font-size: clamp(15px, 1vw, 25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .service-tabs {
