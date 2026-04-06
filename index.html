@@ -19,6 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
 
     <title>Hello, world!</title>
@@ -27,7 +31,7 @@
     <!--navbar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">TUXU</a>
+        <a class="navbar-brand" href="#">Nebula X</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -42,17 +46,26 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Our Project</a>
+              <a class="nav-link" href="#">SERVICES</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#">PROJECTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CLIENTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACTS</a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -61,49 +74,204 @@
     <!-- content -->
     <main class="hero-section">
       <div class="hero-container">
-        <div class="hero-copy">
-          <p class="hero-kicker">CYBER FUTURE</p>
-          <h1>Lorem, ipsum dolor.</h1>
+        <div class="hero-left">
+          <h1>
+            WE'RE NEBULA X,<br />
+            A CREATIVE AGENCY<br />
+            SOLUTIONS FOR EVENTS<br />
+            &amp; EXHIBITIONS
+          </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet qui
-            in vitae rerum, commodi beatae ipsa illo pariatur, omnis neque esse
-            odit ut. Eaque, assumenda? <strong>cyb.jpg</strong>.
+            As a company specializing in events &amp; marketing, we have shaped
+            our business on these values, determination, power, strength &amp;
+            honor dignity. We readily apply what we stand for in every area of
+            our business services to our clients.
           </p>
-
-          <div class="hero-actions">
-            <a href="#" class="hero-btn">button 1</a>
-            <a href="#" class="hero-btn hero-btn-outline">button 2</a>
-            <a href="#" class="watch-link">
-              <span class="watch-icon" aria-hidden="true"></span>
-              <span>Watch a Video</span>
-            </a>
-          </div>
-
-          <div class="hero-stats" role="list" aria-label="Statistik platform">
-            <div class="stat-item" role="listitem">
-              <h3>27k +</h3>
-              <p>Lorem</p>
-            </div>
-            <div class="stat-item" role="listitem">
-              <h3>20k +</h3>
-              <p>Lorem</p>
-            </div>
-            <div class="stat-item" role="listitem">
-              <h3>12k +</h3>
-              <p>Lorem</p>
-            </div>
-          </div>
         </div>
 
-        <div class="hero-image-wrap">
-          <img
-            src="image/cyb.jpg"
-            alt="Cyberpunk character"
-            class="hero-image"
-          />
+        <div class="hero-right">
+          <div class="hero-image-wrap">
+            <img
+              src="image/cyb.jpg"
+              alt="Nebula X event visual"
+              class="hero-image"
+            />
+            <span class="hero-image-badge">JOHOR SMART CITY FORUM 2025</span>
+          </div>
+
+          <div class="hero-about">
+            <h2>WHO ARE WE?</h2>
+            <p>
+              We are a creative agency specialising in event management, media
+              strategies, video production and advertising.<br />
+              We are currently based in Kuala Lumpur, Johor Bahru and
+              Kuching.<br />
+              We create memorable events, comprehensive media strategies,
+              meaningful videos that empower and help our clients achieve their
+              desired needs. What makes us distinctively different from other
+              agencies is our unique management ‘team’. It comprises of
+              specialists in their own fields. To us, ‘age is just a number’.<br />
+              We move as one with the ultimate goal of giving our clients the
+              best regardless of project size and scope.
+            </p>
+          </div>
         </div>
       </div>
     </main>
+
+    <!-- service tabs -->
+    <section class="service-tabs" aria-label="Kategori layanan">
+      <div
+        class="service-tabs-wrap"
+        role="tablist"
+        aria-label="Service categories"
+      >
+        <button
+          class="service-tab is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+        >
+          BRANDING &amp; IDENTITY
+        </button>
+        <button
+          class="service-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          MOTION &amp; FILMMAKING
+        </button>
+        <button
+          class="service-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          DIGITAL CONTENT HUB
+        </button>
+      </div>
+    </section>
+
+    <!-- our projects -->
+    <section class="projects-showcase" aria-label="Our projects">
+      <h2 class="projects-title">OUR PROJECTS</h2>
+
+      <div class="projects-frame">
+        <button
+          class="projects-nav projects-prev"
+          type="button"
+          aria-label="Project sebelumnya"
+        >
+          <span aria-hidden="true">&#10094;</span>
+        </button>
+
+        <div class="projects-track" id="projectsTrack">
+          <a href="#" class="project-card">
+            <img src="image/IMG1.jpeg" alt="Project 1" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG2.jpeg" alt="Project 2" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG3.jpeg" alt="Project 3" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG4.jpeg" alt="Project 4" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG5.jpg" alt="Project 5" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG6.jpeg" alt="Project 6" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG7.jpg" alt="Project 7" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG8.jpeg" alt="Project 8" />
+          </a>
+          <a href="#" class="project-card">
+            <img src="image/IMG9.jpeg" alt="Project 9" />
+          </a>
+        </div>
+
+        <button
+          class="projects-nav projects-next"
+          type="button"
+          aria-label="Project berikutnya"
+        >
+          <span aria-hidden="true">&#10095;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- cta + footer -->
+    <footer class="site-footer" aria-label="Footer utama">
+      <div class="footer-cta-wrap">
+        <div class="footer-cta">
+          <h2>Join us to create, sell and Collect NFT Digital Art</h2>
+          <a href="#" class="footer-cta-btn">Join Community</a>
+        </div>
+      </div>
+
+      <div class="footer-main-wrap">
+        <div class="footer-main">
+          <div class="footer-brand-col">
+            <a href="#" class="footer-logo">PLAY <span>NFT</span></a>
+            <p>
+              The World's Largest Digital Marketplace for crypto collections and
+              non fungible tokens (NFTs). Buy, sell and discover exclusive
+              digital assets
+            </p>
+
+            <div class="footer-social" aria-label="Media sosial">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="X"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-links-col">
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="#">Art</a></li>
+              <li><a href="#">Photography</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <h3>My Account</h3>
+            <ul>
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">My Collections</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Partners</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -113,6 +281,93 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      const serviceTabs = document.querySelectorAll(".service-tab");
+
+      serviceTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          serviceTabs.forEach((item) => {
+            item.classList.remove("is-active");
+            item.setAttribute("aria-selected", "false");
+          });
+
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+        });
+      });
+
+      const projectsTrack = document.getElementById("projectsTrack");
+      const prevBtn = document.querySelector(".projects-prev");
+      const nextBtn = document.querySelector(".projects-next");
+
+      if (projectsTrack && prevBtn && nextBtn) {
+        const cards = Array.from(
+          projectsTrack.querySelectorAll(".project-card"),
+        );
+        let activeIndex = 0;
+        let scrollTicking = false;
+
+        const findClosestIndex = () => {
+          const centerX =
+            projectsTrack.scrollLeft + projectsTrack.clientWidth / 2;
+          let closest = 0;
+          let minDistance = Number.POSITIVE_INFINITY;
+
+          cards.forEach((card, index) => {
+            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            const distance = Math.abs(cardCenter - centerX);
+            if (distance < minDistance) {
+              minDistance = distance;
+              closest = index;
+            }
+          });
+
+          return closest;
+        };
+
+        const updateCenterCard = (index) => {
+          activeIndex = index;
+          cards.forEach((card, i) => {
+            card.classList.toggle("is-center", i === index);
+          });
+        };
+
+        const centerCard = (index, behavior = "smooth") => {
+          const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
+          const target = cards[safeIndex];
+          if (!target) return;
+
+          target.scrollIntoView({
+            behavior,
+            inline: "center",
+            block: "nearest",
+          });
+          updateCenterCard(safeIndex);
+        };
+
+        projectsTrack.addEventListener("scroll", () => {
+          if (scrollTicking) return;
+          scrollTicking = true;
+          requestAnimationFrame(() => {
+            updateCenterCard(findClosestIndex());
+            scrollTicking = false;
+          });
+        });
+
+        prevBtn.addEventListener("click", () => {
+          centerCard(activeIndex - 1);
+        });
+
+        nextBtn.addEventListener("click", () => {
+          centerCard(activeIndex + 1);
+        });
+
+        requestAnimationFrame(() => {
+          centerCard(2, "auto");
+        });
+      }
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
