@@ -211,6 +211,97 @@
       </div>
     </section>
 
+    <!-- our team -->
+    <section class="team-showcase" aria-label="Our team">
+      <h2 class="team-title">OUR TEAM</h2>
+
+      <div class="team-frame">
+        <div class="team-track" id="teamTrack">
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 1" />
+            <h3>Lorem Ipsum</h3>
+            <p>Senior Editor</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 2" />
+            <h3>Lorem Ipsum</h3>
+            <p>Admin</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 3" />
+            <h3>Lorem Ipsum</h3>
+            <p>Junior 3D Design</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 4" />
+            <h3>Lorem Ipsum</h3>
+            <p>Senior Graphic Designer</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 5" />
+            <h3>Lorem Ipsum</h3>
+            <p>Art Director</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 6" />
+            <h3>Lorem Ipsum</h3>
+            <p>Photographer</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 7" />
+            <h3>Lorem Ipsum</h3>
+            <p>Creative Lead</p>
+          </article>
+          <article class="team-card">
+            <img src="image/profil1.jpeg" alt="Team member 8" />
+            <h3>Lorem Ipsum</h3>
+            <p>Motion Designer</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- our clients -->
+    <section class="clients-showcase" aria-label="Our clients">
+      <h2 class="clients-title">OUR CLIENTS</h2>
+
+      <div class="clients-row clients-row-top">
+        <div class="clients-strip" aria-hidden="false">
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+        </div>
+      </div>
+
+      <div class="clients-row clients-row-bottom">
+        <div class="clients-strip" aria-hidden="false">
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+          <img src="image/logo1.jpeg" alt="Client logo" class="client-logo-card" />
+        </div>
+      </div>
+    </section>
+
     <!-- cta + footer -->
     <footer class="site-footer" aria-label="Footer utama">
       <div class="footer-cta-wrap">
@@ -394,74 +485,288 @@
       });
 
       const projectsTrack = document.getElementById("projectsTrack");
+      const projectsFrame = document.querySelector(".projects-frame");
       const prevBtn = document.querySelector(".projects-prev");
       const nextBtn = document.querySelector(".projects-next");
 
-      if (projectsTrack && prevBtn && nextBtn) {
-        const cards = Array.from(
+      if (projectsTrack && projectsFrame && prevBtn && nextBtn) {
+        const originalCards = Array.from(
           projectsTrack.querySelectorAll(".project-card"),
         );
-        let activeIndex = 0;
-        let scrollTicking = false;
 
-        const findClosestIndex = () => {
-          const centerX =
-            projectsTrack.scrollLeft + projectsTrack.clientWidth / 2;
-          let closest = 0;
-          let minDistance = Number.POSITIVE_INFINITY;
+        if (originalCards.length <= 1) {
+          if (originalCards[0]) {
+            originalCards[0].classList.add("is-center");
+          }
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+        } else {
+          const total = originalCards.length;
+          const prependClones = originalCards.map((card) =>
+            card.cloneNode(true),
+          );
+          const appendClones = originalCards.map((card) =>
+            card.cloneNode(true),
+          );
 
-          cards.forEach((card, index) => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-            const distance = Math.abs(cardCenter - centerX);
-            if (distance < minDistance) {
-              minDistance = distance;
-              closest = index;
+          [...prependClones, ...appendClones].forEach((clone) => {
+            clone.dataset.clone = "true";
+            clone.setAttribute("aria-hidden", "true");
+            clone.tabIndex = -1;
+          });
+
+          const prependFragment = document.createDocumentFragment();
+          prependClones.forEach((clone) => prependFragment.appendChild(clone));
+          projectsTrack.insertBefore(prependFragment, projectsTrack.firstChild);
+
+          const appendFragment = document.createDocumentFragment();
+          appendClones.forEach((clone) => appendFragment.appendChild(clone));
+          projectsTrack.appendChild(appendFragment);
+
+          const cards = Array.from(
+            projectsTrack.querySelectorAll(".project-card"),
+          );
+          const TRANSITION_MS = 460;
+          const EASING = "cubic-bezier(0.22, 0.61, 0.36, 1)";
+          let activeIndex = total;
+          let isAnimating = false;
+          let queuedDirection = 0;
+
+          const getLogicalIndex = (index) => {
+            return (((index - total) % total) + total) % total;
+          };
+
+          const updateCenterCard = () => {
+            const logicalIndex = getLogicalIndex(activeIndex);
+            const middleSetIndex = total + logicalIndex;
+            cards.forEach((card, index) => {
+              const isCenter =
+                index === middleSetIndex && card.dataset.clone !== "true";
+              card.classList.toggle("is-center", isCenter);
+            });
+          };
+
+          const applyTransform = (withTransition = true) => {
+            const targetCard = cards[activeIndex];
+            if (!targetCard) return;
+
+            const cardCenter =
+              targetCard.offsetLeft + targetCard.offsetWidth / 2;
+            const frameCenter = projectsFrame.clientWidth / 2;
+            const translateX = frameCenter - cardCenter;
+
+            projectsTrack.style.transition = withTransition
+              ? `transform ${TRANSITION_MS}ms ${EASING}`
+              : "none";
+            projectsTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+            updateCenterCard();
+          };
+
+          const jumpToIndexSilently = (nextIndex) => {
+            activeIndex = nextIndex;
+            applyTransform(false);
+
+            // Force layout flush so browser applies non-animated transform immediately.
+            void projectsTrack.offsetHeight;
+
+            requestAnimationFrame(() => {
+              projectsTrack.style.transition = `transform ${TRANSITION_MS}ms ${EASING}`;
+            });
+          };
+
+          const normalizeBoundary = () => {
+            if (activeIndex < total) {
+              jumpToIndexSilently(activeIndex + total);
+            } else if (activeIndex >= total * 2) {
+              jumpToIndexSilently(activeIndex - total);
+            }
+          };
+
+          const moveBy = (direction) => {
+            if (isAnimating) {
+              queuedDirection += direction;
+              queuedDirection = Math.max(-8, Math.min(8, queuedDirection));
+              return;
+            }
+
+            isAnimating = true;
+            activeIndex += direction;
+            applyTransform(true);
+          };
+
+          const consumeQueue = () => {
+            if (queuedDirection === 0) return;
+            const step = queuedDirection > 0 ? 1 : -1;
+            queuedDirection -= step;
+            moveBy(step);
+          };
+
+          projectsTrack.addEventListener("transitionend", (event) => {
+            if (event.propertyName !== "transform") return;
+            normalizeBoundary();
+            isAnimating = false;
+            consumeQueue();
+          });
+
+          prevBtn.addEventListener("click", () => {
+            moveBy(-1);
+          });
+
+          nextBtn.addEventListener("click", () => {
+            moveBy(1);
+          });
+
+          window.addEventListener("resize", () => {
+            applyTransform(false);
+          });
+
+          window.addEventListener("load", () => {
+            applyTransform(false);
+          });
+
+          requestAnimationFrame(() => {
+            applyTransform(false);
+          });
+        }
+      }
+
+      const teamTrack = document.getElementById("teamTrack");
+      const teamFrame = document.querySelector(".team-frame");
+
+      if (teamTrack && teamFrame) {
+        const sourceCards = Array.from(teamTrack.querySelectorAll(".team-card"));
+
+        if (sourceCards.length > 1) {
+          const total = sourceCards.length;
+          const prependClones = sourceCards.map((card) => card.cloneNode(true));
+          const appendClones = sourceCards.map((card) => card.cloneNode(true));
+
+          [...prependClones, ...appendClones].forEach((clone) => {
+            clone.dataset.clone = "true";
+            clone.setAttribute("aria-hidden", "true");
+          });
+
+          const prependFragment = document.createDocumentFragment();
+          prependClones.forEach((clone) => prependFragment.appendChild(clone));
+          teamTrack.insertBefore(prependFragment, teamTrack.firstChild);
+
+          const appendFragment = document.createDocumentFragment();
+          appendClones.forEach((clone) => appendFragment.appendChild(clone));
+          teamTrack.appendChild(appendFragment);
+
+          const cards = Array.from(teamTrack.querySelectorAll(".team-card"));
+          const TRANSITION_MS = 560;
+          const EASING = "cubic-bezier(0.23, 1, 0.32, 1)";
+          const AUTO_INTERVAL_MS = 950;
+
+          let activeIndex = total;
+          let isAnimating = false;
+          let queuedStep = 0;
+          let isPaused = false;
+          let autoTimer = null;
+
+          const applyTransform = (withTransition = true) => {
+            const targetCard = cards[activeIndex];
+            if (!targetCard) return;
+
+            const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2;
+            const frameCenter = teamFrame.clientWidth / 2;
+            const translateX = frameCenter - cardCenter;
+
+            teamTrack.style.transition = withTransition
+              ? `transform ${TRANSITION_MS}ms ${EASING}`
+              : "none";
+            teamTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+          };
+
+          const jumpToIndexSilently = (nextIndex) => {
+            activeIndex = nextIndex;
+            applyTransform(false);
+            void teamTrack.offsetHeight;
+
+            requestAnimationFrame(() => {
+              teamTrack.style.transition = `transform ${TRANSITION_MS}ms ${EASING}`;
+            });
+          };
+
+          const normalizeBoundary = () => {
+            if (activeIndex < total) {
+              jumpToIndexSilently(activeIndex + total);
+            } else if (activeIndex >= total * 2) {
+              jumpToIndexSilently(activeIndex - total);
+            }
+          };
+
+          const moveBy = (step) => {
+            if (isAnimating) {
+              queuedStep += step;
+              queuedStep = Math.max(-8, Math.min(8, queuedStep));
+              return;
+            }
+
+            isAnimating = true;
+            activeIndex += step;
+            applyTransform(true);
+          };
+
+          const consumeQueue = () => {
+            if (queuedStep === 0) return;
+            const step = queuedStep > 0 ? 1 : -1;
+            queuedStep -= step;
+            moveBy(step);
+          };
+
+          const startAutoSlide = () => {
+            if (autoTimer) return;
+            autoTimer = setInterval(() => {
+              if (!isPaused) {
+                moveBy(1);
+              }
+            }, AUTO_INTERVAL_MS);
+          };
+
+          const stopAutoSlide = () => {
+            if (!autoTimer) return;
+            clearInterval(autoTimer);
+            autoTimer = null;
+          };
+
+          teamTrack.addEventListener("transitionend", (event) => {
+            if (event.propertyName !== "transform") return;
+            normalizeBoundary();
+            isAnimating = false;
+            consumeQueue();
+          });
+
+          teamFrame.addEventListener("mouseenter", () => {
+            isPaused = true;
+          });
+
+          teamFrame.addEventListener("mouseleave", () => {
+            isPaused = false;
+          });
+
+          window.addEventListener("resize", () => {
+            applyTransform(false);
+          });
+
+          window.addEventListener("load", () => {
+            applyTransform(false);
+          });
+
+          requestAnimationFrame(() => {
+            applyTransform(false);
+            startAutoSlide();
+          });
+
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+              stopAutoSlide();
+            } else {
+              startAutoSlide();
             }
           });
-
-          return closest;
-        };
-
-        const updateCenterCard = (index) => {
-          activeIndex = index;
-          cards.forEach((card, i) => {
-            card.classList.toggle("is-center", i === index);
-          });
-        };
-
-        const centerCard = (index, behavior = "smooth") => {
-          const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
-          const target = cards[safeIndex];
-          if (!target) return;
-
-          target.scrollIntoView({
-            behavior,
-            inline: "center",
-            block: "nearest",
-          });
-          updateCenterCard(safeIndex);
-        };
-
-        projectsTrack.addEventListener("scroll", () => {
-          if (scrollTicking) return;
-          scrollTicking = true;
-          requestAnimationFrame(() => {
-            updateCenterCard(findClosestIndex());
-            scrollTicking = false;
-          });
-        });
-
-        prevBtn.addEventListener("click", () => {
-          centerCard(activeIndex - 1);
-        });
-
-        nextBtn.addEventListener("click", () => {
-          centerCard(activeIndex + 1);
-        });
-
-        requestAnimationFrame(() => {
-          centerCard(2, "auto");
-        });
+        }
       }
 
       // === ANIMASI HERO DAN MARKER ===
