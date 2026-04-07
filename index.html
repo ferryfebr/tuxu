@@ -468,6 +468,28 @@
             digital branding needs.
           </h3>
 
+          <p class="footer-cta-click-hint">
+            Click Here
+            <i class="fa-solid fa-angles-down" aria-hidden="true"></i>
+          </p>
+
+          <div class="footer-cta-social-top" aria-label="Kontak utama">
+            <a
+              href="https://api.whatsapp.com/send/?phone=6285163656781&text=Hello+Firanita.+I+am+interested+in+hiring+you.+Please+share+more+details+regarding+your+Project+Administration+services.&type=phone_number&app_absent=0"
+              aria-label="Hubungi via WhatsApp"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=maulanamuhammadraffi@gmail.com&su=Inquiry%20Regarding%20Project%20Administration%20and%20Engineering%20Services&body=Dear%20Firanita%2C%20I%20am%20interested%20in%20hiring%20you%20for%20a%20project.%20I%20found%20your%20portfolio%20and%20would%20like%20to%20schedule%20a%20quick%20discussion%20about%20my%20needs.%20Thank%20you."
+              aria-label="Hubungi via Email"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+
           <div class="footer-cta-social" aria-label="Kontak sosial media">
             <a href="#" aria-label="Hubungi via LinkedIn"
               ><i class="fa-brands fa-linkedin-in"></i
@@ -761,10 +783,13 @@
             const targetCard = cards[activeIndex];
             if (!targetCard) return;
 
+            const frameStyles = window.getComputedStyle(projectsFrame);
+            const framePaddingLeft =
+              Number.parseFloat(frameStyles.paddingLeft) || 0;
             const cardCenter =
               targetCard.offsetLeft + targetCard.offsetWidth / 2;
             const frameCenter = projectsFrame.clientWidth / 2;
-            const translateX = frameCenter - cardCenter;
+            const translateX = frameCenter - framePaddingLeft - cardCenter;
 
             projectsTrack.style.transition = withTransition
               ? `transform ${TRANSITION_MS}ms ${EASING}`
