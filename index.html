@@ -29,6 +29,14 @@
     <title>Nebula X</title>
   </head>
   <body id="top">
+    <div class="page-parallax" aria-hidden="true">
+      <span class="parallax-layer parallax-layer-1" data-speed="0.06"></span>
+      <span class="parallax-layer parallax-layer-2" data-speed="0.1"></span>
+      <span class="parallax-layer parallax-layer-3" data-speed="0.14"></span>
+      <span class="parallax-layer parallax-layer-4" data-speed="0.18"></span>
+      <span class="parallax-overlay"></span>
+    </div>
+
     <!--navbar-->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
@@ -1085,6 +1093,9 @@
 
       if (!prefersReducedMotion) {
         const heroSection = document.querySelector(".hero-section");
+        const pageParallaxLayers = Array.from(
+          document.querySelectorAll(".page-parallax .parallax-layer"),
+        );
         const parallaxSections = [
           {
             element: document.querySelector(".hero-section"),
@@ -1125,6 +1136,14 @@
         const updateParallax = () => {
           const viewportCenter = window.innerHeight / 2;
           const isMobile = window.innerWidth <= 768;
+          const scrollTop = window.scrollY || window.pageYOffset || 0;
+
+          pageParallaxLayers.forEach((layer, index) => {
+            const speed = Number.parseFloat(layer.dataset.speed || "0");
+            const shiftY = -scrollTop * speed;
+            const driftX = Math.sin(scrollTop * 0.0015 + index) * 8;
+            layer.style.transform = `translate3d(${driftX}px, ${shiftY}px, 0)`;
+          });
 
           parallaxSections.forEach((section) => {
             const rect = section.element.getBoundingClientRect();
