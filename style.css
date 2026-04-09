@@ -12,6 +12,9 @@
   --badge-start: #6f5cff;
   --badge-end: #2fa8ff;
   --font-navbar: "Neuropol X", "Poppins", sans-serif;
+  --navbar-height: 86px;
+  --navbar-offset-gap: 14px;
+  --navbar-z: 5000;
 }
 
 * {
@@ -23,7 +26,8 @@ body {
   font-family: "Poppins", sans-serif;
   background: #04030c;
   color: #fff;
-  padding-top: 86px;
+  padding-top: calc(var(--navbar-height) + var(--navbar-offset-gap));
+  isolation: isolate;
 }
 
 body > *:not(.page-parallax) {
@@ -91,7 +95,7 @@ body > *:not(.page-parallax) {
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: calc(var(--navbar-height) + var(--navbar-offset-gap));
 }
 
 @media (max-width: 768px) {
@@ -111,20 +115,23 @@ html {
 #our-projects,
 #our-clients,
 #join-us {
-  scroll-margin-top: 110px;
+  scroll-margin-top: calc(var(--navbar-height) + var(--navbar-offset-gap));
 }
 
 /* Navbar Bootstrap (sesuai struktur index.html) */
 .navbar {
-  position: fixed;
+  position: fixed !important;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  z-index: var(--navbar-z) !important;
   min-height: 86px;
   background: rgba(5, 2, 41, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 0;
   width: 100%;
+  transform: translateZ(0);
 }
 
 .navbar .container-fluid {
@@ -145,6 +152,7 @@ html {
 .navbar-collapse {
   justify-content: center;
   flex-grow: 1;
+  z-index: calc(var(--navbar-z) + 1);
 }
 
 .nav-search-btn {

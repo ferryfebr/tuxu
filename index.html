@@ -1077,6 +1077,26 @@
       // === ANIMASI HERO DAN MARKER ===
       // Script ini menangani perpindahan konten hero dengan efek 3D parallax saat klik tab
 
+      // Keep body offset in sync with fixed navbar height.
+      const syncNavbarOffset = () => {
+        const navbar = document.querySelector(".navbar");
+        if (!navbar) return;
+        const navbarHeight = Math.ceil(navbar.getBoundingClientRect().height);
+        document.documentElement.style.setProperty(
+          "--navbar-height",
+          `${navbarHeight}px`,
+        );
+      };
+
+      window.addEventListener("load", syncNavbarOffset);
+      window.addEventListener("resize", syncNavbarOffset);
+
+      const navbarCollapse = document.getElementById("navbarNav");
+      if (navbarCollapse) {
+        navbarCollapse.addEventListener("shown.bs.collapse", syncNavbarOffset);
+        navbarCollapse.addEventListener("hidden.bs.collapse", syncNavbarOffset);
+      }
+
       // Navbar background on scroll
       window.addEventListener("scroll", () => {
         const navbar = document.querySelector(".navbar");
