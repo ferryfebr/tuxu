@@ -422,28 +422,7 @@ html {
 }
 
 .hero-section::before {
-  content: "";
-  position: absolute;
-  left: -350px;
-  bottom: -340px;
-  width: 980px;
-  height: 980px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle,
-      rgba(76, 121, 197, 0.18) 0 14%,
-      transparent 14% 20%
-    ),
-    radial-gradient(circle, rgba(76, 121, 197, 0.2) 0 28%, transparent 28% 36%),
-    radial-gradient(circle, rgba(76, 121, 197, 0.2) 0 43%, transparent 43% 51%),
-    radial-gradient(
-      circle,
-      rgba(76, 121, 197, 0.22) 0 58%,
-      transparent 58% 66%
-    ),
-    radial-gradient(circle, rgba(76, 121, 197, 0.24) 0 74%, transparent 74% 82%);
-  pointer-events: none;
+  content: none;
 }
 
 .hero-container {
@@ -1453,13 +1432,6 @@ html {
     width: min(1280px, 100% - 32px);
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .hero-section::before {
-    left: -420px;
-    bottom: -460px;
-    width: 940px;
-    height: 940px;
   }
 
   .hero-left h1 {
