@@ -1547,17 +1547,27 @@ html {
     --team-z-step: 48px;
     --team-rotate: 16deg;
     --team-scale-step: 0.1;
-    height: clamp(250px, 62vw, 310px);
+    height: clamp(230px, 62vw, 280px);
   }
 
   .team-card {
-    width: min(48vw, 190px);
+    width: min(42vw, 160px);
     border-radius: 20px 20px 12px 12px;
-    padding: 8px 8px 10px;
+    padding: 7px 7px 8px;
   }
 
   .team-card img {
+    aspect-ratio: 0.9 / 1;
     border-radius: 14px;
+  }
+
+  .team-card h3 {
+    margin: 6px 0 2px;
+    font-size: clamp(13px, 3.7vw, 16px);
+  }
+
+  .team-card p {
+    font-size: clamp(10px, 2.8vw, 12px);
   }
 
   .clients-showcase {
